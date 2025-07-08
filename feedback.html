@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        /* Navbar tương đồng với trang chủ */
+
+        .navbar {
+            background-color: #1f1f1f;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links a {
+            margin-left: 1rem;
+            text-decoration: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid white;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Hover chuyển sang trắng, chữ đen */
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: white;
+            color: #1f1f1f;
+        }
+
+        /* Icon menu toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Responsive - mobile view */
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: #1f1f1f;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                z-index: 999;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                margin: 0.5rem 0;
+                border: none;
+            }
+        }
+
+
+
+        /* Feedback Section */
+        #feedback {
+            background: linear-gradient(to bottom right, #fdfbfb, #ebedee);
+            text-align: center;
+            padding: 5rem 1rem 4rem;
+        }
+
+        #feedback h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        #feedback p {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Feedback Card */
+        .feedback-card {
+            background: white;
+            border-radius: 1.25rem;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feedback-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feedback-text {
+            font-size: 1.2rem;
+            color: #334155;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            font-size: 1.4rem;
+            color: #fbbf24;
+        }
+
+        .footer {
+            text-align: right;
+            padding: 2rem 2rem 3rem;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .feedback-nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .feedback-nav-wrapper button {
+            font-size: 1.5rem;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .feedback-nav-wrapper button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .filter-wrapper {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #star-filter {
+            padding: 6px 12px;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">Hộp Bí Ẩn Chân Thật</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Trang Chủ</a>
+            <a href="feedback.html" class="active">Phản Hồi</a>
+        </nav>
+    </header>
+
+    <section id="feedback">
+        <h2>Phản Hồi của khách hàng</h2>
+        <p>Những phản hồi ẩn danh từ những người đã mở hộp bí ẩn của họ</p>
+
+        <div class="filter-wrapper">
+            <label for="star-filter">Lọc theo số sao:</label>
+            <select id="star-filter" onchange="applyFilter()">
+                <option value="all">Tất cả</option>
+                <option value="5">5 sao</option>
+                <option value="4">4 sao</option>
+                <option value="3">3 sao</option>
+                <option value="2">2 sao</option>
+                <option value="1">1 sao</option>
+            </select>
+        </div>
+
+        <div class="feedback-nav-wrapper">
+            <button id="prev-btn" onclick="prevFeedback()">←</button>
+
+            <div id="feedback-container" class="feedback-card">
+                <p id="feedback-text" class="feedback-text"></p>
+                <p id="feedback-date" style="color: gray; font-style: italic; font-size: 0.9rem; margin: 8px 0;"></p>
+                <div id="feedback-rating" class="stars"></div>
+            </div>
+
+            <button id="next-btn" onclick="nextFeedback()">→</button>
+        </div>
+    </section>
+
+
+
+
+    <footer class="footer">
+        <p>Made with Minh Thành</p>
+    </footer>
+</body>
+<script>
+    const feedbacks = [
+        { text: "Hộp quá bất ngờ! Mình nhận được món đồ giá trị gấp đôi số tiền bỏ ra.", rating: 5 },
+        { text: "Mình rất thích ý tưởng hộp bí ẩn này. Sẽ mua tiếp trong tương lai!", rating: 4 },
+        { text: "Dịch vụ nhanh chóng và đáng tin cậy, Hài lòng tuyệt đối.", rating: 5 },
+        { text: "Không ngờ nhận được món đồ đúng gu như vậy luôn!", rating: 5 },
+        { text: "Hộp bí ẩn thực sự khiến mình bất ngờ. Gói hàng cẩn thận và đẹp.", rating: 4 },
+        { text: "Một trải nghiệm thú vị, cảm giác mở hộp rất hồi hộp!", rating: 5 },
+        { text: "Mình đã mua thử và thấy rất đáng tiền.", rating: 4 },
+        { text: "Hộp chất lượng, hàng chính hãng. Rất ưng!", rating: 5 },
+        { text: "Sẽ giới thiệu cho bạn bè vì quá hài lòng.", rating: 5 },
+        { text: "Sản phẩm bên trong bất ngờ thật! Rất vui vì đã thử.", rating: 4 },
+        { text: "Xui vì dính sản phẩm lỗ với giá tiền :(((", rating: 3 },
+        { text: "Tạm ổn nhưng mà nên recomended là cần phải có những tri ân khách hàng để tôi mua nhiều hơn nữa.", rating: 5 },
+        { text: "Quá tệ", rating: 1 },
+    ];
+
+    let currentIndex = 0;
+    let filteredList = [];
+
+    function getCurrentDateKey() {
+        const today = new Date();
+        return today.toISOString().split("T")[0];
+    }
+
+    function formatDate(isoDate) {
+        const [year, month, day] = isoDate.split("-");
+        return `${day}/${month}/${year}`;
+    }
+
+    function getRandomFeedback() {
+        return feedbacks[Math.floor(Math.random() * feedbacks.length)];
+    }
+
+    function loadFeedbacks() {
+        const stored = localStorage.getItem("feedbackList");
+        return stored ? JSON.parse(stored) : [];
+    }
+
+    function saveFeedbacks(list) {
+        localStorage.setItem("feedbackList", JSON.stringify(list));
+    }
+
+    function displayFeedback(index) {
+        if (!filteredList[index]) {
+            document.getElementById("feedback-container").style.display = "none";
+            return;
+        }
+
+        const feedback = filteredList[index];
+        document.getElementById("feedback-text").textContent = `"${feedback.text}"`;
+        document.getElementById("feedback-rating").innerHTML =
+            "★".repeat(feedback.rating) + "☆".repeat(5 - feedback.rating);
+        document.getElementById("feedback-date").textContent = `Đánh giá ngày: ${formatDate(feedback.date)}`;
+        document.getElementById("feedback-container").classList.add("visible");
+        document.getElementById("feedback-container").style.display = "block";
+
+        document.getElementById("prev-btn").disabled = index === 0;
+        document.getElementById("next-btn").disabled = index === filteredList.length - 1;
+    }
+
+    function showDailyFeedback() {
+        const today = getCurrentDateKey();
+        let feedbackList = loadFeedbacks();
+
+        const alreadyExists = feedbackList.some(fb => fb.date === today);
+        if (!alreadyExists) {
+            const newFeedback = getRandomFeedback();
+            feedbackList.push({ ...newFeedback, date: today });
+            saveFeedbacks(feedbackList);
+        }
+
+        applyFilter(); // Load và áp dụng filter ban đầu
+    }
+
+    function applyFilter() {
+        const allFeedbacks = loadFeedbacks();
+        const filterValue = document.getElementById("star-filter").value;
+
+        if (filterValue === "all") {
+            filteredList = allFeedbacks;
+        } else {
+            const star = parseInt(filterValue);
+            filteredList = allFeedbacks.filter(fb => fb.rating === star);
+        }
+
+        currentIndex = 0;
+
+        if (filteredList.length === 0) {
+            document.getElementById("feedback-container").style.display = "none";
+            document.getElementById("prev-btn").disabled = true;
+            document.getElementById("next-btn").disabled = true;
+        } else {
+            displayFeedback(currentIndex);
+        }
+    }
+
+    function prevFeedback() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            displayFeedback(currentIndex);
+        }
+    }
+
+    function nextFeedback() {
+        if (currentIndex < filteredList.length - 1) {
+            currentIndex++;
+            displayFeedback(currentIndex);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", showDailyFeedback);
+</script>
+
+
+
+
+
+<script>
+    function toggleMenu() {
+        const nav = document.getElementById('navLinks');
+        if (nav) {
+            nav.classList.toggle('show');
+        } else {
+            console.log("Không tìm thấy navLinks!");
+        }
+    }
+</script>
+
+
+
+
+
+</html>

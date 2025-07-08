@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Honest Mystery Box</title>
+    <link rel="icon" type="image/png"
+        href="https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-f618-622f-9d8d-3049d05bad24/raw?se=2025-07-08T16%3A59%3A24Z&sp=r&sv=2024-08-04&sr=b&scid=61c87134-b34d-5786-a7f7-369acf0ff69c&skoid=60f2aa1f-3685-43ee-be37-d8c8d08d5a64&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-07T22%3A45%3A39Z&ske=2025-07-08T22%3A45%3A39Z&sks=b&skv=2024-08-04&sig=xT//lz/j4gM30LWqGmcpkZ10MfjxBbTSqM4rRzB5kMQ%3D">
+    <link rel="stylesheet" href="style.css" />
+    <meta name="description"
+        content="Mua một chiếc hộp bí ẩn – Đừng hỏi bên trong có gì. Cam kết hoàn tiền nếu bạn không hài lòng!">
+    <meta property="og:title" content="Hộp Bí Ẩn Chân Thật">
+    <meta property="og:description" content="Trải nghiệm bất ngờ – Cam kết hoàn tiền nếu giá trị dưới 70%!">
+    <meta property="og:image" content="URL hình ảnh đại diện (nếu có)">
+
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <h1>Mystery Box</h1>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="active">Trang Chủ</a>
+                <a href="feedback.html">Phản Hồi</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Hộp Bí Ẩn</h2>
+            <p>Mua một chiếc hộp. Đừng hỏi bên trong có gì.<br />Có những bí mật để vậy mới hay ho.</p>
+            <a href="#pricing" class="btn">Buy Now</a>
+        </div>
+    </section>
+
+
+
+    <section id="pricing" class="pricing-section">
+        <h2>Chọn Bí Ẩn Của Bạn</h2>
+        <p>Mỗi chiếc hộp chứa đựng một bí mật. Mỗi mức giá mang một loại bất ngờ khác nhau.</p>
+
+        <div class="pricing-grid">
+            <div class="box whisper">
+                <h3>Hộp Lắt Léo</h3>
+                <p class="price">50.000₫</p>
+                <p>🌀"Gợi sự tinh nghịch, khiến bạn phải phì cười vì bất ngờ."</p>
+                <button class="buy-now-btn" data-product="Thì Thầm" data-price="5₫">Mua Ngay</button>
+            </div>
+            <div class="box whisper">
+                <h3>Hộp Bí Mật Nhỏ</h3>
+                <p class="price">50.000₫</p>
+                <p>🕊️"Nhẹ nhàng, đáng yêu – như một bí mật ngọt ngào được giữ kín."</p>
+                <button class="buy-now-btn" data-product="Thì Thầm" data-price="5₫">Mua Ngay</button>
+            </div>
+            <div class="box echo">
+                <h3>Hộp Phản Hồi</h3>
+                <p class="price">100.000₫</p>
+                <p>🔁"Kết nối cảm xúc và phản ánh nội tâm – như một lời thì thầm quay trở lại."</p>
+                <button class="buy-now-btn" data-product="Vang Vọng" data-price="10₫">Mua Ngay</button>
+            </div>
+            <div class="box echo">
+                <h3>Hộp Dư Âm</h3>
+                <p class="price">100.000₫</p>
+                <p>🎵"Nhẹ nhàng nhưng sâu lắng – giống như điều gì đó còn vang vọng."</p>
+                <button class="buy-now-btn" data-product="Vang Vọng" data-price="10₫">Mua Ngay</button>
+            </div>
+            <div class="box riddle">
+                <h3>Hộp Thử Thách</h3>
+                <p class="price">200.000₫</p>
+                <p>🔥"Châm ngòi cho trí tuệ và sự khám phá – không dành cho người yếu tim."</p>
+                <button class="buy-now-btn" data-product="Câu đố" data-price="20₫">Mua Ngay</button>
+            </div>
+            <div class="box riddle">
+                <h3>Hộp Hỏi Nhanh Đáp Gọn</h3>
+                <p class="price">200.000₫</p>
+                <p>⚡"Vui nhộn, phản xạ nhanh – phù hợp với người hiện đại và tò mò."</p>
+                <button class="buy-now-btn" data-product="Câu đố" data-price="20₫">Mua Ngay</button>
+            </div>
+            <div class="box mystery">
+                <h3>Hộp Bản Ngã</h3>
+                <p class="price">500.000₫</p>
+                <p>🧠"Dành cho những ai đang tìm về bản thân – một cú chạm sâu vào nội tâm."</p>
+                <button class="buy-now-btn" data-product="Bí Ẩn" data-price="50₫">Mua Ngay</button>
+            </div>
+            <div class="box mystery">
+                <h3>Hộp Gương Tâm Trí</h3>
+                <p class="price">500.000₫</p>
+                <p>💎"Sang trọng và gợi mở – như nhìn thấy chính mình trong một tấm gương mới."</p>
+                <button class="buy-now-btn" data-product="Bí Ẩn" data-price="50₫">Mua Ngay</button>
+            </div>
+            <div class="box secret">
+                <h3>Hộp Thức Tỉnh</h3>
+                <p class="price">1.000.000₫</p>
+                <p>✨"Như một cái chạm khiến bạn đổi thay – mang đến trải nghiệm độc đáo."</p>
+                <button class="buy-now-btn" data-product="Ẩn Số" data-price="100₫">Mua Ngay</button>
+            </div>
+            <div class="box secret">
+                <h3>Hộp Huyền Bí Tối Thượng</h3>
+                <p class="price">1.000.000₫</p>
+                <p>🌌"Tối thượng’ không phải vì giá trị – mà vì chiều sâu cảm xúc mà nó đánh thức."</p>
+                <button class="buy-now-btn" data-product="Ẩn Số" data-price="100₫">Mua Ngay</button>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <section class="guarantee-section">
+        <h2>🎯 Cam Kết với khách hàng</h2>
+        <div class="guarantee-box">
+            <p>🛡️ Nếu bạn cảm thấy <strong>giá trị nhận được thấp hơn 70%</strong> so với số tiền đã bỏ ra – <strong>
+                    tôi xin cam kết hoàn tiền 100%</strong>.</p>
+            <p>📦 Nếu bạn Không hài lòng? <strong>Gửi lại cho tôi</strong> – bạn sẽ nhận ngay <strong>một hộp mới hoàn
+                    toàn miễn phí</strong>.</p>
+            <p class="note">⟶ Tôi sẽ tạo vùng an toàn tuyệt đối cho những khách hàng mua lần đầu.</p>
+        </div>
+    </section>
+
+
+    <!-- Popup Form Ẩn -->
+    <div id="orderForm" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeForm()">&times;</span>
+            <form onsubmit="window.formSubmitting = true"
+                action="https://docs.google.com/forms/d/e/1FAIpQLSdpyoH70i-cWu8pJcHvVqvK5LSPB0y6ZnFu2UtiNWbX4CU8cw/formResponse"
+                method="POST" target="hidden_iframe">
+
+                <h2>Đặt Hàng Bí Ẩn</h2>
+
+                <label for="name">Họ tên:</label>
+                <input type="text" name="entry.917142313" id="name" required>
+
+                <label for="phone">Số điện thoại:</label>
+                <input type="text" name="entry.1073011188" id="phone" required>
+
+                <label for="address">Địa chỉ:</label>
+                <input type="text" name="entry.488809448" id="address" required>
+
+                <label for="quantity">Số lượng:</label>
+                <input type="number" id="quantity" name="entry.13208053" min="1" value="1">
+
+                <p id="totalPrice" style="font-weight: bold; margin-top: 10px;">Tổng: 0₫</p>
+
+                <!-- Ẩn: Tên sản phẩm và giá -->
+                <input type="hidden" name="entry.1526132412" id="productName">
+                <input type="hidden" name="entry.1422261129" id="productPrice">
+
+                <button type="submit">Gửi Đơn</button>
+                <button type="button" onclick="closeForm()" class="cancel-btn">Huỷ</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay" style="display:none;"></div>
+    <div id="successModal" class="success-modal">
+        <div class="success-content">
+            🎉 Cảm ơn bạn đã đặt hàng! <br>
+            Chúng tôi sẽ xử lý đơn của bạn sớm nhất.
+            <button onclick="closeSuccessModal()">Đóng</button>
+        </div>
+    </div>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+</body>
+
+<script>
+    let selectedPrice = 0;
+    let quantityInput, totalPriceDisplay, productNameInput, productPriceInput;
+    const orderForm = document.getElementById("orderForm");
+    const overlay = document.getElementById("overlay");
+    const successModal = document.getElementById("successModal");
+    window.formSubmitting = false;
+    window.formSubmitted = false; // Thêm biến để theo dõi trạng thái submit
+
+    window.addEventListener('DOMContentLoaded', function () {
+        // Lấy các phần tử trong form
+        quantityInput = document.getElementById('quantity');
+        totalPriceDisplay = document.getElementById('totalPrice');
+        productNameInput = document.getElementById('productName');
+        productPriceInput = document.getElementById('productPrice');
+
+        // Gắn sự kiện cho các nút "Mua Ngay"
+        document.querySelectorAll('.buy-now-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const productName = this.closest('.box').querySelector('h3')?.textContent || this.getAttribute("data-product");
+                const priceText = this.closest('.box').querySelector('.price')?.textContent || this.getAttribute("data-price");
+
+                selectedPrice = parseInt(priceText.replace(/[^\d]/g, '')) || 0;
+
+                productNameInput.value = productName;
+                quantityInput.value = 1;
+                updateTotalPrice();
+
+                // Hiển thị form + overlay
+                orderForm.style.display = "block";
+                overlay.style.display = "block";
+                document.body.style.overflow = "hidden";
+            });
+        });
+
+        // Tính lại giá khi thay đổi số lượng
+        quantityInput.addEventListener('input', updateTotalPrice);
+
+        // Ẩn modal success khi tải trang (đảm bảo không tự hiện)
+        successModal.style.display = "none";
+    });
+
+    function updateTotalPrice() {
+        const quantity = parseInt(quantityInput.value) || 0;
+        const total = quantity * selectedPrice;
+        totalPriceDisplay.textContent = `Tổng: ${total.toLocaleString('vi-VN')}₫`;
+        productPriceInput.value = total;
+    }
+
+    function closeForm() {
+        orderForm.style.display = "none";
+        overlay.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+    window.closeForm = closeForm;
+
+    function closeSuccessModal() {
+        successModal.style.display = "none";
+        overlay.style.display = "none"; // Đảm bảo overlay cũng tắt
+    }
+    window.closeSuccessModal = closeSuccessModal;
+
+    function toggleMenu() {
+        const nav = document.getElementById('navLinks');
+        if (nav) {
+            nav.classList.toggle('show');
+        }
+    }
+    window.toggleMenu = toggleMenu;
+
+    // Xử lý khi form submit thành công
+    document.getElementById("hidden_iframe").addEventListener("load", function () {
+        if (window.formSubmitting) {
+            window.formSubmitted = true; // Đánh dấu đã submit
+            closeForm();
+            successModal.style.display = "flex";
+            overlay.style.display = "block"; // Giữ overlay để làm nền tối
+            window.formSubmitting = false;
+        }
+    });
+</script>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-title">
+            <h3>🎁 Mystery Box</h3>
+            <p>Mỗi hộp là một điều bất ngờ thú vị dành cho bạn.</p>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <p>Email: phamngominhthanh2911@gmail.com</p>
+            <p>Hotline: 0962285704</p>
+        </div>
+
+        <div class="footer-socials">
+            <h4>Follow me</h4>
+            <a href="https://www.facebook.com/luxury004/" target="_blank">🌐 Facebook</a><br>
+            <a href="https://www.instagram.com/subin_2911/" target="_blank">📷 Instagram</a><br>
+            <a href="https://www.tiktok.com/@glory_1593575" target="_blank">🎥 TikTok</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Hộp Bí Ẩn Chân Thật. Tất cả quyền được bảo lưu.</p>
+    </div>
+</footer>
+
+
+
+
+
+</html>
